@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows == 1) {
         // Inicio de sesión exitoso, redirigir al panel de usuarios
-        $_SESSION['dni'] = $dni; // Guardar el DNI en la sesión
+        $_SESSION['id_cliente'] = $id_cliente; // Guardar el DNI en la sesión
         header("Location: usuario.php");
         exit();
     } else {

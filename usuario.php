@@ -18,6 +18,7 @@ if (!isset($_SESSION['dni'])) {
     <h2>Bienvenido al Panel de Usuario</h2>
     <p>Elige una opción:</p>
     <button onclick="window.location.href='consumo.php'">Consumo</button>
-    <button onclick="window.location.href='reservas.php'">Reservas</button>
+    <button onclick="window.location.href='reserva.php'">Nuevas Reservas</button>
+    <button onclick="window.location.href='visualizar_reservas.php'">Ver Reservas</button>
 </body>
 </html>
