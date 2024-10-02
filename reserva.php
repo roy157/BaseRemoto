@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             // Redireccionar a la siguiente página
-            header("Location: siguiente_seccion.php");
+            header("Location: reserva_restaurante.php");
             exit();
         } else {
             echo "Error al guardar la reserva: " . $conn->error;
