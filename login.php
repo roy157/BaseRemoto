@@ -33,8 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
+        // Recuperar el id_cliente
+        $row = $result->fetch_assoc(); // Obtener el resultado como un array asociativo
+        $id_cliente = $row['id_cliente']; // Asegúrate de que el campo 'id_cliente' exista en tu tabla
+
         // Inicio de sesión exitoso, redirigir al panel de usuarios
-        $_SESSION['id_cliente'] = $id_cliente; // Guardar el DNI en la sesión
+        $_SESSION['id_cliente'] = $id_cliente; // Guardar el id_cliente en la sesión
         header("Location: usuario.php");
         exit();
     } else {

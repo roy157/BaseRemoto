@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['dni'])) {
+if (!isset($_SESSION['id_cliente'])) {
     // Si no hay sesión iniciada, redirigir al login
     header("Location: login.php");
     exit();
