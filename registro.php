@@ -1,9 +1,9 @@
 <?php
 // Conexión a la base de datos
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$dbname = 'hotel_db';
+$host = 'srv1006.hstgr.io';
+$user = 'u472469844_est22';
+$pass = '#Bd00022';
+$dbname = 'u472469844_est22';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
