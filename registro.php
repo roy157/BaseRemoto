@@ -1,9 +1,9 @@
 <?php
 // Conexión a la base de datos
-$host = 'srv1006.hstgr.io';
-$user = 'u472469844_est22';
-$pass = '#Bd00022';
-$dbname = 'u472469844_est22';
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+$dbname = 'bd_hotel';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefono = $_POST['telefono'];
     $correo_electronico = $_POST['correo_electronico'];
     $direccion = $_POST['direccion'];
-    $contrasena = $_POST['contrasena']; 
+    $contrasena = $_POST['contrasena']; // Contraseña en texto plano
 
     // Validar si el DNI o el teléfono ya existen
     $check_sql = "SELECT * FROM clientes WHERE dni = ? OR telefono = ?";

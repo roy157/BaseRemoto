@@ -2,10 +2,10 @@
 session_start();
 
 // Configuración de la conexión a la base de datos
-$host = 'srv1006.hstgr.io'; // Cambia si es necesario
-$dbname = 'u472469844_est22'; // Asegúrate de que sea el nombre correcto de la base de datos
-$username = 'u472469844_est22'; // El usuario de la base de datos
-$password_db = '#Bd00022'; // La contraseña de la base de datos
+$host = 'localhost'; // Cambia si es necesario
+$dbname = 'bd_hotel'; // Asegúrate de que sea el nombre correcto de la base de datos
+$username = 'root'; // El usuario de la base de datos
+$password_db = ''; // La contraseña de la base de datos
 
 // Crear la conexión
 $conn = new mysqli($host, $username, $password_db, $dbname);
