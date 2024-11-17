@@ -19,6 +19,6 @@ if (!isset($_SESSION['id_cliente'])) {
     <p>Elige una opción:</p>
     <button onclick="window.location.href='consumo.php'">Consumo</button>
     <button onclick="window.location.href='reserva.php'">Nuevas Reservas</button>
-    <button onclick="window.location.href='visualizar_reservas.php'">Ver Reservas</button>
+    <button onclick="window.location.href='ver_reserva.php?id_cliente=<?php echo $_SESSION['id_cliente']; ?>'">Ver Reservas</button>
 </body>
 </html>
