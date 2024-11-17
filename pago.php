@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_FILES['comprobante']) && $_FILES['comprobante']['error'] == UPLOAD_ERR_OK) {
                 $nombre_archivo = $_FILES['comprobante']['name'];
                 $ruta_temporal = $_FILES['comprobante']['tmp_name'];
-                $directorio_destino = 'comprobantes/'; // Asegúrate de que este directorio exista y tenga permisos adecuados
+                $directorio_destino = 'comprobantes/'; // directorio a crear con permisos adecuados
                 
                 // Mover el archivo a la carpeta de comprobantes
                 if (move_uploaded_file($ruta_temporal, $directorio_destino . basename($nombre_archivo))) {
