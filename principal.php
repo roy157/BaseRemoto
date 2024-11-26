@@ -2,13 +2,6 @@
 // Inicia la sesión
 session_start();
 
-// Verificar si ya existe alguna variable de sesión antes de eliminarla
-if (isset($_SESSION['check_in']) || isset($_SESSION['check_out'])) {
-    // Si hay datos de sesión previos, los eliminamos
-    session_unset(); // Elimina todas las variables de sesión
-    session_destroy(); // Destruye la sesión
-}
-
 // Datos de conexión a la base de datos
 $host = 'localhost';
 $user = 'root';
@@ -31,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Redirigir a la página hyh.php
     header("Location: hyh.php");
-    exit; // Es importante llamar a exit después de header para evitar que el script continúe ejecutándose
+    exit;
 }
 ?>
 
