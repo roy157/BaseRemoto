@@ -42,22 +42,21 @@ $habitacionesDisponibles = [];
 if ($check_in && $check_out && $habitaciones > 0) {
     // Recorre cada habitación solicitada por el usuario
     for ($i = 0; $i < $habitaciones; $i++) {
-        // Sumar la cantidad de adultos y niños por habitación
         $adultos_requeridos = $adultos[$i];
         $ninos_requeridos = $ninos[$i];
-        $capacidad_total = $adultos_requeridos + $ninos_requeridos; // Sumar adultos y niños
 
-        // Consulta SQL para buscar habitaciones que tengan suficiente capacidad
+        // Consulta SQL para buscar habitaciones que cumplan los requisitos
         $sql = "SELECT * FROM cuartos 
-                WHERE capacidad >= $capacidad_total 
+                WHERE capacidad_adultos >= $adultos_requeridos 
+                AND capacidad_ninos >= $ninos_requeridos 
                 AND id_cuarto NOT IN (
                     SELECT id_cuarto FROM reservas 
                     WHERE (check_in BETWEEN '$check_in' AND '$check_out') 
                     OR (check_out BETWEEN '$check_in' AND '$check_out')
                 )";
-
+        
         $resultado = $conn->query($sql);
-
+        
         if ($resultado->num_rows > 0) {
             // Agregar habitaciones que cumplen los requisitos a la lista de disponibles
             while ($fila = $resultado->fetch_assoc()) {
@@ -106,13 +105,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (!empty($habitacionesDisponibles)): ?>
             <?php foreach ($habitacionesDisponibles as $habitacion): ?>
                 <div class="habitacion-disponible">
-                    <h4><?php echo htmlspecialchars($habitacion['descripcion']); ?></h4>
-                    <p><strong>Numero:</strong> <?php echo $habitacion['numero']; ?></p>
-                    <p><strong>Tipo:</strong> <?php echo $habitacion['tipo']; ?></p>
-                    <p><strong>Piso:</strong> <?php echo $habitacion['piso']; ?></p>
-                    <p><strong>Estado:</strong> <?php echo $habitacion['estado']; ?></p>
-                    <p><strong>Capacidad:</strong> <?php echo $habitacion['capacidad']; ?> personas</p>
-                    <p><strong>Precio Base:</strong> <?php echo $habitacion['precio_base']; ?></p>
+                    <h4><?php echo htmlspecialchars($habitacion['nombre_cuarto']); ?></h4>
+                    <p>Capacidad - Adultos: <?php echo $habitacion['capacidad_adultos']; ?>, Niños: <?php echo $habitacion['capacidad_ninos']; ?></p>
+                    <p>Precio Base: <?php echo $habitacion['precio_base']; ?> | Precio Promoción: <?php echo $habitacion['precio_base'] - 50; ?></p>
                     <label>
                         <input type="checkbox" name="reservas[]" value="<?php echo $habitacion['id_cuarto']; ?>">
                         Reservar esta habitación
